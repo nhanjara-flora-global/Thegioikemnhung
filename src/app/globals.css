@@ -1,0 +1,33 @@
+:root {
+  --background: #fffaf7;
+  --foreground: #2b2321;
+  --primary: #b4536a;
+  --muted: #6f6360;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100dvh;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
