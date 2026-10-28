@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css"><meta charset="utf-8"><title>StemCalculator</title>
+<style>html,body{margin:0} body{background:var(--cream-50);padding:24px} .demo{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style></head>
+<body class="kn">
+<section class="kn-calc" style="max-width:500px" aria-labelledby="ct">
+  <h3 class="kn-h3" id="ct">Bạn muốn làm bó mấy bông?</h3>
+  <div class="kn-seg" role="group" aria-label="Chọn nhanh số bông">
+    <button data-n="3">3 bông</button><button data-n="9" aria-pressed="true">9 bông</button><button data-n="20">20 bông</button><button data-n="99">99 bông</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px"><span class="kn-muted">Hoặc tự chọn</span>
+    <div class="kn-stepper"><button id="dec" aria-label="Bớt một bông">−</button><output id="n" aria-live="polite">9</output><button id="inc" aria-label="Thêm một bông">+</button></div></div>
+  <div class="kn-calc__result">
+    <div class="kn-calc__line"><span>Kẽm nhung hồng (3 sợi/bông)</span><b id="r1"></b></div>
+    <div class="kn-calc__line"><span>Kẽm nhung xanh lá (1 sợi/bông)</span><b id="r2"></b></div>
+    <div class="kn-calc__line"><span>Kẽm cành 30cm</span><b id="r3"></b></div>
+  </div>
+  <button class="kn-btn kn-btn--primary kn-btn--block" id="cta"></button>
+</section>
+<script>
+  var n = 9, PACK = 10, segs = document.querySelectorAll('.kn-seg button');
+  function packs(s){ return Math.ceil(s / PACK); }
+  function render(){
+    document.getElementById('n').textContent = n;
+    document.getElementById('r1').textContent = 3*n + ' sợi → ' + packs(3*n) + ' bó';
+    document.getElementById('r2').textContent = n + ' sợi → ' + packs(n) + ' bó';
+    document.getElementById('r3').textContent = n + ' cây';
+    document.getElementById('cta').textContent = 'Thêm nguyên liệu cho ' + n + ' bông';
+    segs.forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.n === n ? 'true' : 'false'); });
+  }
+  segs.forEach(function(b){ b.addEventListener('click', function(){ n = +b.dataset.n; render(); }); });
+  document.getElementById('dec').onclick = function(){ if(n>1){ n--; render(); } };
+  document.getElementById('inc').onclick = function(){ if(n<199){ n++; render(); } };
+  render();
+</script>
+</body>
+</html>

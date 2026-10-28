@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<meta charset="utf-8">
+<title>Kẽm Nhung</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--cream-50); color:var(--ink); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; height:288px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:288px; }
+  .pink { fill:var(--pink-300); } .mint { fill:var(--mint-300); } .butter { fill:var(--butter-300); }
+  .rose { fill:var(--pink-600); } .leaf { fill:var(--mint-700); } .white { fill:var(--surface); }
+  .blk { rx:var(--radius-lg); }
+  .stem { rx:var(--radius-sm); }
+  .words { position:absolute; left:var(--space-8); bottom:var(--space-8); max-width:440px; }
+  .name { margin:0; font-family:var(--font-display); font-size:84px; line-height:.95; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+  .tag { margin:var(--space-2) 0 0 4px; font-size:14px; line-height:20px; color:var(--ink-muted); }
+  .lilac { fill:var(--lilac-300); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      pink-300 160x288 bled off the top (identity, largest) · mint-300 128x184 · lilac-300 160x168 bled off the right · butter-300 and pink-600 only as flower heads
+  arrangement one tall pink slab with two satellites, bottoms on one line space-6 above the edge, space-4 gutters
+  pattern     pipe-cleaner flowers from "Mềm như sợi nhung": space-4-wide stems at radius-sm (pills) rising out of the mint block, disc heads in pink-600 / butter-300; literal motif row, shapes only
+  scales      sides in space-2 multiples; gutters space-4; corners radius-lg; stems rx radius-sm (half of space-4)
+-->
+<rect class="pink blk" x="16" y="-24" width="160" height="288" rx="22"/>
+<rect class="mint blk" x="192" y="80" width="128" height="184" rx="22"/>
+<rect class="lilac blk" x="336" y="32" width="160" height="168" rx="22"/>
+<rect class="leaf stem" x="216" y="120" width="16" height="144" rx="8"/>
+<rect class="leaf stem" x="248" y="96" width="16" height="168" rx="8"/>
+<rect class="leaf stem" x="280" y="136" width="16" height="128" rx="8"/>
+<circle class="rose" cx="224" cy="120" r="24"/>
+<circle class="butter" cx="256" cy="96" r="24"/>
+<circle class="rose" cx="288" cy="136" r="20"/>
+<circle class="white" cx="224" cy="120" r="8"/>
+<circle class="rose" cx="256" cy="96" r="8"/>
+<circle class="white" cx="288" cy="136" r="6"/>
+<circle class="white" cx="96" cy="72" r="32"/>
+<circle class="rose" cx="96" cy="72" r="12"/>
+<rect class="pink stem" x="352" y="216" width="112" height="16" rx="8"/>
+<rect class="mint stem" x="368" y="240" width="72" height="16" rx="8"/>
+</svg>
+</div>
+<div class="words">
+  <h1 class="name">Kẽm Nhung</h1>
+  <p class="tag">Sợi nhỏ mềm mại, quà xinh tự tay làm.</p>
+</div>
+</div>
+</body>
+</html>

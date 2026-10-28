@@ -1,0 +1,68 @@
+/* Kẽm Nhung Pop — generated from tokens.json. Đừng sửa tay: sửa tokens.json rồi sinh lại. */
+:root {
+  /* Màu */
+  --paper-50: #fff7ec;  /* Nền trang — giấy kem sáng; đủ ấm để màu kẹo không chói, đủ sáng để màu rực bật lên. */
+  --surface: #ffffff;  /* Nền thẻ, modal, ô nhập. */
+  --paper-200: #fdebd5;  /* Nền vùng phụ: footer, khối vật liệu. Chữ ink 14:1. */
+  --pink-100: #ffe1ee;  /* Hồng kẹo nhạt: nền nút soft, nền ảnh sản phẩm. */
+  --pink-400: #ff5fa2;  /* Hồng kẹo rực — màu nhận diện chính, khối lớn, banner. Chỉ đặt chữ ink (5.9:1), không bao giờ chữ trắng. */
+  --pink-600: #e0115f;  /* Hồng sen đậm — DUY NHẤT cho hành động mua hàng; link; focus ring. Chữ trắng 4.8:1. */
+  --pink-700: #b0164f;  /* Chữ hồng trên pink-100 (5.6:1); đế kẹo dưới nút primary (shadow-candy). */
+  --orange-100: #ffe9d9;  /* Nền tag Trung bình. */
+  --orange-400: #ff8c42;  /* Cam quýt: khối nhấn, minh hoạ. Chỉ chữ ink (7.2:1). */
+  --orange-700: #9a3f00;  /* Chữ cam trên orange-100 (5.8:1): Trung bình. */
+  --yellow-100: #fff3bf;  /* Nền ghi chú Mẹo nhỏ. */
+  --yellow-400: #ffd43b;  /* Vàng chanh: huy hiệu Bán chạy, ngôi sao, nhị hoa. Chỉ chữ ink (11.6:1). */
+  --yellow-800: #7a5c00;  /* Chữ trên yellow-100 (5.6:1). */
+  --green-100: #d9f8e6;  /* Nền tag Người mới, thành công, điểm thưởng. */
+  --green-400: #2ed482;  /* Xanh lá non: lá, cành, khối minh hoạ. Chỉ chữ ink (8.6:1). */
+  --green-700: #0f6e44;  /* Chữ xanh trên green-100 (5.6:1): Còn hàng, +điểm, Người mới. */
+  --violet-100: #efe5ff;  /* Nền tag Nâng cao. */
+  --violet-400: #a978ff;  /* Tím oải hương rực: khối minh hoạ, góc Cộng đồng. Chỉ chữ ink (5.4:1). */
+  --violet-700: #6b2fd6;  /* Chữ tím trên violet-100 (5.8:1): Nâng cao. */
+  --ink: #2b1633;  /* Chữ chính — tím than rất đậm, làm nền tối cho màu kẹo bật sáng. Thay cho đen. */
+  --ink-muted: #6b5872;  /* Chữ phụ. Chỉ trên surface, paper-50, paper-200 và các nền -100 (≥5.3:1); không đặt lên nền -400. */
+  --line: #f1e2ea;  /* Đường chia mảnh, đường chỉ khâu trang trí. */
+  --border: #9c8aa2;  /* Viền ô nhập, checkbox, stepper — 3.2:1 trên surface. */
+  --danger: #c62828;  /* Lỗi, Hết hàng. Chữ trên surface 5.6:1. */
+  /* Bóng */
+  --shadow-soft: 0 4px 14px rgba(224, 17, 95, 0.12);
+  --shadow-lift: 0 12px 28px rgba(43, 22, 51, 0.16);
+  --shadow-candy: 0 4px 0 #b0164f;
+  /* Khoảng cách */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  /* Bo góc */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  /* Font */
+  --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
+  --font-hand: "Mali", "Nunito", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Kiểu chữ — dùng class hoặc tham khảo giá trị */
+.text-display { font-family: var(--font-display); font-size: 64px; line-height: 68px; font-weight: 800; letter-spacing: -0.01em; }
+.text-h1 { font-family: var(--font-display); font-size: 48px; line-height: 54px; font-weight: 800; }
+.text-h2 { font-family: var(--font-display); font-size: 34px; line-height: 40px; font-weight: 800; }
+.text-h3 { font-family: var(--font-display); font-size: 24px; line-height: 30px; font-weight: 700; }
+.text-body { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 400; }
+.text-body-sm { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.text-label { font-family: var(--font-sans); font-size: 16px; line-height: 22px; font-weight: 700; }
+.text-price { font-family: var(--font-sans); font-size: 22px; line-height: 28px; font-weight: 800; }
+.text-caption { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.text-note { font-family: var(--font-hand); font-size: 20px; line-height: 28px; font-weight: 500; }
+
+@media (max-width: 640px) {
+  .text-display { font-size: 44px; line-height: 48px; }
+  .text-h1 { font-size: 34px; line-height: 40px; }
+  .text-h2 { font-size: 28px; line-height: 34px; }
+}

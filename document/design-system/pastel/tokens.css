@@ -1,0 +1,64 @@
+/* Kẽm Nhung — generated from tokens.json. Đừng sửa tay: sửa tokens.json rồi sinh lại. */
+:root {
+  /* Màu */
+  --cream-50: #fffaf3;  /* Nền trang — màu kem sữa ấm, để sợi kẽm nhung rực rỡ trong ảnh nổi bật. */
+  --surface: #ffffff;  /* Nền thẻ, modal, ô nhập. Trắng tinh đặt trên cream-50. */
+  --beige-200: #f6ead9;  /* Màu 'len mộc': nền vùng phụ, footer, khối vật liệu, giấy kraft. Chữ ink 10:1. */
+  --pink-100: #ffe6ea;  /* Hồng sữa dâu: nền nút soft, nền highlight, nền ảnh sản phẩm. */
+  --pink-300: #ffc4cf;  /* Màu nhận diện chính (hồng phấn) dạng khối lớn: banner, minh hoạ. Chỉ đặt chữ ink (8.2:1). */
+  --pink-600: #c63d62;  /* Dâu chín — DUY NHẤT cho hành động mua hàng: Mua ngay, Thêm vào giỏ, Thanh toán; link; focus ring. Chữ trắng 5:1. */
+  --pink-700: #a8324f;  /* Chữ hồng trên pink-100 (5.5:1), giá khuyến mãi. */
+  --mint-100: #e1f5ec;  /* Nền tag Người mới, thông báo thành công, điểm thưởng. */
+  --mint-300: #b2e3cd;  /* Khối nhận diện phụ (xanh mint), minh hoạ lá cành. Chỉ chữ ink. */
+  --mint-700: #2b7556;  /* Chữ xanh trên mint-100 (4.9:1): Còn hàng, +điểm, Người mới. */
+  --butter-100: #fff3c9;  /* Nền tag Trung bình, nền ghi chú Mẹo nhỏ. */
+  --butter-300: #ffe08a;  /* Vàng bơ nhấn vui: huy hiệu Bán chạy, ngôi sao, nhị hoa. Chỉ chữ ink. */
+  --butter-800: #7a5600;  /* Chữ trên butter-100 (6:1). */
+  --lilac-100: #eee6fa;  /* Nền tag Nâng cao. Tím oải hương — màu kẽm nhung được yêu thích nhất cho tulip và lan. */
+  --lilac-300: #d6c6f2;  /* Khối minh hoạ phụ, nền góc Cộng đồng. Chỉ chữ ink. */
+  --lilac-700: #6a4b9e;  /* Chữ tím trên lilac-100 (5.6:1): Nâng cao. */
+  --ink: #4a2e28;  /* Chữ chính, tiêu đề. Nâu socola thay cho đen — ấm, mềm như đồ thủ công. */
+  --ink-muted: #7d625a;  /* Chữ phụ, mô tả, meta. Chỉ trên surface, cream-50, beige-200 và các nền -100 (≥4.6:1). */
+  --line: #f0e3d2;  /* Đường chia mảnh, đường chỉ khâu trang trí (không dùng làm viền ô nhập). */
+  --border: #a68b7a;  /* Viền ô nhập, checkbox, stepper — 3:1 trên surface. */
+  --danger: #b23b36;  /* Lỗi, Hết hàng. Chữ trên surface 5.9:1. */
+  /* Bóng */
+  --shadow-soft: 0 4px 14px rgba(198, 61, 98, 0.10);
+  --shadow-lift: 0 12px 28px rgba(74, 46, 40, 0.14);
+  /* Khoảng cách */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  /* Bo góc */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  /* Font */
+  --font-display: "Quicksand", "Nunito", system-ui, sans-serif;
+  --font-hand: "Mali", "Nunito", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Kiểu chữ — dùng class hoặc tham khảo giá trị */
+.text-display { font-family: var(--font-display); font-size: 64px; line-height: 68px; font-weight: 700; letter-spacing: -0.01em; }
+.text-h1 { font-family: var(--font-display); font-size: 48px; line-height: 54px; font-weight: 700; }
+.text-h2 { font-family: var(--font-display); font-size: 34px; line-height: 40px; font-weight: 700; }
+.text-h3 { font-family: var(--font-display); font-size: 24px; line-height: 30px; font-weight: 700; }
+.text-body { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 400; }
+.text-body-sm { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.text-label { font-family: var(--font-sans); font-size: 16px; line-height: 22px; font-weight: 700; }
+.text-price { font-family: var(--font-sans); font-size: 22px; line-height: 28px; font-weight: 800; }
+.text-caption { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.text-note { font-family: var(--font-hand); font-size: 20px; line-height: 28px; font-weight: 500; }
+
+@media (max-width: 640px) {
+  .text-display { font-size: 44px; line-height: 48px; }
+  .text-h1 { font-size: 34px; line-height: 40px; }
+  .text-h2 { font-size: 28px; line-height: 34px; }
+}

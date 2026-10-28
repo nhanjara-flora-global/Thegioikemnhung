@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Mali:wght@500;600&display=swap");
+
+/* Kẽm Nhung — component styles (CSS only, tiền tố kn-). Đọc token qua var(--…). */
+.kn { font-family: var(--font-sans); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.kn *, .kn *::before, .kn *::after { box-sizing: border-box; }
+.kn-h3 { font-family: var(--font-display); font-size: 24px; line-height: 30px; font-weight: 700; margin: 0; }
+.kn-hand { font-family: var(--font-hand); font-weight: 500; }
+.kn-muted { color: var(--ink-muted); font-size: 16px; line-height: 24px; margin: 0; }
+.kn-price { font-size: 22px; line-height: 28px; font-weight: 800; }
+.kn-caption { font-size: 14px; line-height: 20px; font-weight: 600; }
+
+/* Button */
+.kn-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 52px; padding: 0 var(--space-6); border: 0; border-radius: var(--radius-pill);
+  font: 700 17px/22px var(--font-sans); cursor: pointer; text-decoration: none; white-space: nowrap;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease; }
+.kn-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+.kn-btn:active { transform: translateY(0); }
+.kn-btn:focus-visible { outline: 3px solid var(--pink-600); outline-offset: 3px; }
+.kn-btn--primary { background: var(--pink-600); color: var(--surface); }
+.kn-btn--soft { background: var(--pink-100); color: var(--pink-700); }
+.kn-btn--mint { background: var(--mint-100); color: var(--mint-700); }
+.kn-btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--border); }
+.kn-btn--sm { min-height: 44px; padding: 0 var(--space-4); font-size: 16px; }
+.kn-btn--block { width: 100%; white-space: normal; text-align: center; padding-top: 10px; padding-bottom: 10px; }
+.kn-btn[disabled] { background: var(--beige-200); color: var(--ink-muted); cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Tag */
+.kn-tag { display: inline-flex; align-items: center; gap: var(--space-1); padding: 4px 12px;
+  border-radius: var(--radius-pill); font: 700 14px/20px var(--font-sans); white-space: nowrap; }
+.kn-tag--beginner { background: var(--mint-100); color: var(--mint-700); }
+.kn-tag--medium { background: var(--butter-100); color: var(--butter-800); }
+.kn-tag--advanced { background: var(--lilac-100); color: var(--lilac-700); }
+.kn-tag--hot { background: var(--butter-300); color: var(--ink); }
+.kn-tag--topic { background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* Card shell */
+.kn-card { background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);
+  overflow: hidden; transition: box-shadow .2s ease, transform .2s ease; }
+.kn-card:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); }
+.kn-card__body { padding: var(--space-4); display: grid; gap: var(--space-2); }
+
+/* Media placeholder (thay bằng ảnh/video thật) */
+.kn-media { position: relative; aspect-ratio: 4 / 3; background: var(--pink-100); overflow: hidden; }
+.kn-media img, .kn-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.kn-media--mint { background: var(--mint-100); } .kn-media--butter { background: var(--butter-100); }
+.kn-media--video { aspect-ratio: 9 / 12; }
+.kn-media__badges { position: absolute; top: var(--space-3); left: var(--space-3); display: flex; gap: var(--space-2); }
+.kn-media__time { position: absolute; right: var(--space-3); bottom: var(--space-3); background: var(--ink); color: var(--surface);
+  padding: 2px 8px; border-radius: var(--radius-pill); font: 700 14px/20px var(--font-sans); }
+.kn-play { position: absolute; inset: 0; margin: auto; width: 56px; height: 56px; border-radius: 50%; border: 0;
+  background: var(--surface); box-shadow: var(--shadow-lift); display: grid; place-items: center; cursor: pointer; }
+.kn-play::before { content: ""; margin-left: 4px; border-left: 16px solid var(--pink-600);
+  border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+
+/* Kit card */
+.kn-kit__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-1); }
+.kn-kit__old { color: var(--ink-muted); text-decoration: line-through; font-size: 15px; margin-left: 6px; font-weight: 600; }
+
+/* Material list (Mua theo công thức) */
+.kn-materials { background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: var(--space-6); display: grid; gap: var(--space-4); }
+.kn-materials__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); }
+.kn-materials ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.kn-mat { display: grid; grid-template-columns: auto 40px 1fr auto; align-items: center; gap: var(--space-3); }
+.kn-swatch { width: 40px; height: 40px; border-radius: var(--radius-md); display: grid; place-items: center; }
+.kn-swatch::after { content: ""; width: 26px; height: 8px; border-radius: var(--radius-pill); background: currentColor; transform: rotate(-30deg); }
+.kn-mat__name { font-weight: 700; font-size: 17px; line-height: 24px; }
+.kn-mat__meta { color: var(--ink-muted); font-size: 15px; line-height: 22px; }
+.kn-mat__price { font-weight: 700; font-size: 16px; }
+.kn-check { appearance: none; width: 22px; height: 22px; margin: 0; border-radius: var(--radius-sm); border: 2px solid var(--border); background: var(--surface); display: grid; place-items: center; cursor: pointer; }
+.kn-check:checked { background: var(--pink-600); border-color: var(--pink-600); }
+.kn-check:checked::after { content: ""; width: 6px; height: 11px; border: solid var(--surface); border-width: 0 3px 3px 0; transform: translateY(-1px) rotate(45deg); }
+.kn-check:focus-visible { outline: 3px solid var(--pink-600); outline-offset: 2px; }
+.kn-total { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-4); border-top: 2px dashed var(--line); }
+
+/* Stem calculator */
+.kn-calc { background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: var(--space-6); display: grid; gap: var(--space-4); }
+.kn-seg { display: inline-flex; flex-wrap: wrap; gap: var(--space-2); }
+.kn-seg button { min-height: 44px; padding: 0 var(--space-4); border-radius: var(--radius-pill); border: 0; cursor: pointer;
+  background: var(--cream-50); color: var(--ink); box-shadow: inset 0 0 0 2px var(--line); font: 700 16px/22px var(--font-sans); }
+.kn-seg button[aria-pressed="true"] { background: var(--pink-600); color: var(--surface); box-shadow: none; }
+.kn-seg button:focus-visible, .kn-stepper button:focus-visible { outline: 3px solid var(--pink-600); outline-offset: 2px; }
+.kn-stepper { display: inline-flex; align-items: center; border-radius: var(--radius-pill); box-shadow: inset 0 0 0 2px var(--border); }
+.kn-stepper button { width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: var(--ink); font: 800 20px/1 var(--font-sans); cursor: pointer; }
+.kn-stepper output { min-width: 48px; text-align: center; font: 800 18px/1 var(--font-sans); }
+.kn-calc__result { background: var(--mint-100); border-radius: var(--radius-md); padding: var(--space-4); display: grid; gap: var(--space-2); }
+.kn-calc__line { display: flex; justify-content: space-between; gap: var(--space-3); font-size: 16px; line-height: 24px; }
+.kn-calc__line b { color: var(--mint-700); }
+
+/* Community post */
+.kn-post .kn-media { aspect-ratio: 1 / 1; background: var(--mint-300); }
+.kn-post__author { display: flex; align-items: center; gap: var(--space-2); }
+.kn-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--butter-300); display: grid; place-items: center; font: 800 15px/1 var(--font-display); color: var(--ink); }
+.kn-points { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: var(--radius-pill); background: var(--mint-100); color: var(--mint-700); font: 800 14px/20px var(--font-sans); }
+.kn-like { border: 0; background: transparent; color: var(--pink-600); font: 700 15px/20px var(--font-sans); cursor: pointer; padding: 0; }
+
+/* Tip note — ghi chú viết tay, viền chỉ khâu */
+.kn-tip { position: relative; background: var(--butter-100); border-radius: var(--radius-md); padding: var(--space-4) var(--space-4) var(--space-4) 56px;
+  outline: 2px dashed var(--butter-300); outline-offset: -8px; }
+.kn-tip::before { content: "✿"; position: absolute; left: var(--space-4); top: 14px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--butter-300); color: var(--ink); display: grid; place-items: center; font-size: 16px; }
+.kn-tip__label { display: block; font: 800 14px/20px var(--font-sans); letter-spacing: .04em; text-transform: uppercase; color: var(--butter-800); }
+.kn-tip p { margin: 2px 0 0; font: 500 20px/28px var(--font-hand); color: var(--ink); }
+.kn-tip--mint { background: var(--mint-100); outline-color: var(--mint-300); } .kn-tip--mint::before { background: var(--mint-300); } .kn-tip--mint .kn-tip__label { color: var(--mint-700); }
+
+/* Hình minh hoạ "sợi kẽm" dùng trong placeholder */
+.kn-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.kn-art .p { fill: var(--pink-300); } .kn-art .p6 { fill: var(--pink-600); } .kn-art .m { fill: var(--mint-300); }
+.kn-art .m7 { fill: var(--mint-700); } .kn-art .b { fill: var(--butter-300); } .kn-art .w { fill: var(--surface); }
+.kn-art .l { fill: var(--lilac-300); }

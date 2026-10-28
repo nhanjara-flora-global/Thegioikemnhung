@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css"><meta charset="utf-8"><title>MaterialList</title>
+<style>html,body{margin:0} body{background:var(--cream-50);padding:24px} .demo{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style></head>
+<body class="kn">
+<section class="kn-materials" style="max-width:500px" aria-labelledby="mt">
+  <div class="kn-materials__head"><h3 class="kn-h3" id="mt">Vật liệu cho bó 9 tulip</h3><span class="kn-muted">5 món</span></div>
+  <ul>
+    <li class="kn-mat"><input type="checkbox" class="kn-check" checked aria-label="Chọn Kẽm nhung hồng phấn" data-p="54000">
+      <span class="kn-swatch" style="background:var(--pink-100);color:var(--pink-300)"></span>
+      <span><div class="kn-mat__name">Kẽm nhung hồng phấn</div><div class="kn-mat__meta">Loại 1 lông dày · 27 sợi</div></span>
+      <span class="kn-mat__price">54.000₫</span></li>
+    <li class="kn-mat"><input type="checkbox" class="kn-check" checked aria-label="Chọn Kẽm nhung xanh lá" data-p="18000">
+      <span class="kn-swatch" style="background:var(--mint-100);color:var(--mint-700)"></span>
+      <span><div class="kn-mat__name">Kẽm nhung xanh lá</div><div class="kn-mat__meta">Làm lá · 9 sợi</div></span>
+      <span class="kn-mat__price">18.000₫</span></li>
+    <li class="kn-mat"><input type="checkbox" class="kn-check" checked aria-label="Chọn Kẽm cành 30cm" data-p="15000">
+      <span class="kn-swatch" style="background:var(--butter-100);color:var(--butter-800)"></span>
+      <span><div class="kn-mat__name">Kẽm cành 30cm</div><div class="kn-mat__meta">9 cây</div></span>
+      <span class="kn-mat__price">15.000₫</span></li>
+    <li class="kn-mat"><input type="checkbox" class="kn-check" checked aria-label="Chọn Băng keo sáp xanh" data-p="12000">
+      <span class="kn-swatch" style="background:var(--beige-200);color:var(--ink-muted)"></span>
+      <span><div class="kn-mat__name">Băng keo sáp xanh</div><div class="kn-mat__meta">1 cuộn</div></span>
+      <span class="kn-mat__price">12.000₫</span></li>
+    <li class="kn-mat"><input type="checkbox" class="kn-check" checked aria-label="Chọn Giấy gói + thiệp" data-p="25000">
+      <span class="kn-swatch" style="background:var(--pink-100);color:var(--pink-600)"></span>
+      <span><div class="kn-mat__name">Giấy gói + thiệp</div><div class="kn-mat__meta">1 bộ</div></span>
+      <span class="kn-mat__price">25.000₫</span></li>
+  </ul>
+  <div class="kn-total"><span class="kn-muted">Tạm tính</span><span class="kn-price" id="tot">124.000₫</span></div>
+  <button class="kn-btn kn-btn--primary kn-btn--block" id="addall">Thêm toàn bộ vào giỏ</button>
+</section>
+<script>
+  var boxes = document.querySelectorAll('.kn-check'), tot = document.getElementById('tot'), btn = document.getElementById('addall');
+  function sum(){ var s=0,n=0; boxes.forEach(function(b){ if(b.checked){ s+= +b.dataset.p; n++; } });
+    tot.textContent = s.toLocaleString('vi-VN') + '₫';
+    btn.textContent = n === boxes.length ? 'Thêm toàn bộ vào giỏ' : 'Thêm ' + n + ' món vào giỏ'; btn.disabled = n === 0; }
+  boxes.forEach(function(b){ b.addEventListener('change', sum); }); sum();
+</script>
+</body>
+</html>
