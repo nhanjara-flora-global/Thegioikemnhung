@@ -19,7 +19,7 @@ export function VideoPlayer({ url, title }: { url?: string; title: string }) {
   return (
     <div className={`site-video${video.vertical ? " site-video--vertical" : ""}`}>
       <iframe
-        src={video.embedUrl}
+        src={video.playUrl}
         title={title}
         loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

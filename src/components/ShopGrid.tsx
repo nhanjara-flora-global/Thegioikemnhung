@@ -11,14 +11,14 @@ export function ShopGrid({ products }: { products: Product[] }) {
 
   return (
     <>
-      <div className="kn-seg" role="group" aria-label="Lọc theo loại">
+      <div className="yt-chips" role="group" aria-label="Lọc theo loại">
         {[{ id: "all" as const, label: "Tất cả" }, ...categories].map((c) => (
           <button key={c.id} aria-pressed={filter === c.id} onClick={() => setFilter(c.id)}>
             {c.label}
           </button>
         ))}
       </div>
-      <div className="site-grid">
+      <div className="yt-prodgrid">
         {shown.map((p) => (
           <ProductCard key={p.slug} product={p} />
         ))}

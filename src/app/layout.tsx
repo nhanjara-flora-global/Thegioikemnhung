@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Baloo_2, Mali, Nunito } from "next/font/google";
-import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
 import "@/styles/kn/tokens.css";
 import "@/styles/kn/components.css";
@@ -31,11 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi" className={`${baloo.variable} ${nunito.variable} ${mali.variable}`}>
-      <body className="kn">
-        <SiteHeader />
-        <main className="site-main">{children}</main>
-        <SiteFooter />
-      </body>
+      <body className="kn">{children}</body>
     </html>
   );
 }

@@ -1,7 +1,8 @@
 // Bài hướng dẫn: mỗi bài là một video dạy làm một bó hoa, kèm vật liệu để mua.
-// Hiện là dữ liệu mẫu — khi có trang quản trị + Supabase, shop sẽ đăng bài từ đó.
+// Shop đăng / sửa bài ở /admin/bai-viet; đọc bài qua lib/tutorials-data.ts.
 
-import { getProduct, type Product } from "./catalog";
+import type { Product } from "./catalog";
+import { parseVideo } from "./video";
 
 export type Level = "beginner" | "medium" | "advanced";
 
@@ -20,6 +21,8 @@ export type MaterialSpec = { product: string; note?: string } & (
 export type Tutorial = {
   slug: string;
   title: string;
+  /** Mã kênh đăng bài (lib/channels.ts). */
+  channel: string;
   /** Tên bông dùng trong nút: "Mua nguyên liệu làm 9 bông tulip hồng". */
   flowerName: string;
   level: Level;
@@ -42,116 +45,67 @@ export type Tutorial = {
 
 export type Material = MaterialSpec & { item: Product };
 
-const tutorials: Tutorial[] = [
-  {
-    slug: "bo-tulip-hong-phan",
-    title: "Bó tulip hồng phấn cho người mới",
-    flowerName: "tulip hồng phấn",
-    level: "beginner",
-    makeTime: "30 phút",
-    duration: "1:12",
-    defaultFlowers: 3,
-    summary: "Bó 3 bông tulip xinh xắn — mẫu dễ nhất để bắt đầu với kẽm nhung.",
-    steps: [
-      "Lấy 3 sợi kẽm hồng, uốn mỗi sợi thành một vòng cánh dài khoảng 5cm.",
-      "Chụm 3 cánh lại, xoắn chặt phần gốc vào nhau.",
-      "Lấy 1 sợi xanh lá làm cành, móc đầu cành vào giữa 3 cánh rồi xoắn chặt.",
-      "Uốn sợi xanh lá thứ hai thành chiếc lá, xoắn vào giữa cành.",
-      "Bóp nhẹ các cánh cho khum lại thành hình tulip.",
-      "Làm đủ số bông, chụm lại, quấn băng keo quanh cành.",
-      "Gói giấy, thắt ruy băng là xong.",
-    ],
-    tips: [
-      { afterStep: 2, text: "Xoắn 2 vòng ở gốc để bông thật chắc nhé!" },
-      { afterStep: 5, text: "Cánh hơi lệch một chút trông lại tự nhiên hơn." },
-    ],
-    materials: [
-      { product: "kem-nhung-hong-phan", perFlower: 3, note: "Làm cánh" },
-      { product: "kem-nhung-xanh-la", perFlower: 2, note: "Làm cành và lá" },
-      { product: "bang-keo-quan-canh", fixed: 1, note: "Quấn cành" },
-      { product: "giay-goi-hoa", fixed: 1, note: "Gói bó hoa" },
-      { product: "ruy-bang-lua", fixed: 1, note: "Thắt nơ" },
-      { product: "kim-cat-kem", fixed: 1, note: "Cắt kẽm — bỏ chọn nếu đã có" },
-    ],
-  },
-  {
-    slug: "bo-9-tulip-tim",
-    title: "Bó 9 tulip tím oải hương tặng sinh nhật",
-    flowerName: "tulip tím",
-    level: "beginner",
-    makeTime: "1 giờ 15 phút",
-    duration: "2:05",
-    defaultFlowers: 9,
-    summary: "9 bông tulip tím — con số “mãi mãi” người Việt hay chọn để tặng.",
-    steps: [
-      "Làm từng bông tulip giống bài tulip hồng: 3 cánh tím, 1 cành, 1 lá.",
-      "Xếp 1 bông ở giữa, 8 bông xoay vòng quanh, cao thấp so le.",
-      "Quấn băng keo quanh cành từ trên xuống dưới cho chặt.",
-      "Cắt bằng gốc cành, gói 2 lớp giấy và thắt ruy băng.",
-    ],
-    tips: [{ afterStep: 2, text: "Bông giữa cao hơn khoảng 2cm thì bó hoa nhìn sẽ tròn đầy." }],
-    materials: [
-      { product: "kem-nhung-tim-oai-huong", perFlower: 3, note: "Làm cánh" },
-      { product: "kem-nhung-xanh-la", perFlower: 2, note: "Làm cành và lá" },
-      { product: "bang-keo-quan-canh", fixed: 1, note: "Quấn cành" },
-      { product: "giay-goi-hoa", fixed: 1, note: "Gói bó hoa" },
-      { product: "ruy-bang-lua", fixed: 1, note: "Thắt nơ" },
-      { product: "kim-cat-kem", fixed: 1, note: "Cắt kẽm — bỏ chọn nếu đã có" },
-    ],
-  },
-  {
-    slug: "bo-cuc-vang",
-    title: "Bó cúc vàng có nhị",
-    flowerName: "cúc vàng",
-    level: "medium",
-    makeTime: "50 phút",
-    duration: "1:48",
-    defaultFlowers: 5,
-    summary: "Cúc nhiều cánh nhỏ, gắn nhị hoa bằng keo nến — tươi tắn cho góc bàn học.",
-    steps: [
-      "Cắt mỗi sợi vàng làm đôi, uốn thành 8 cánh nhỏ.",
-      "Xếp 8 cánh thành vòng tròn, xoắn gốc vào nhau.",
-      "Bắn một chấm keo vào giữa, gắn nhị hoa.",
-      "Gắn cành và lá xanh như bài tulip.",
-      "Chụm các bông, quấn băng keo, gói giấy và thắt nơ.",
-    ],
-    tips: [{ afterStep: 3, text: "Đợi keo nguội 10 giây rồi mới buông tay nhé." }],
-    materials: [
-      { product: "kem-nhung-vang-chanh", perFlower: 4, note: "Làm cánh" },
-      { product: "nhi-hoa-vang", perFlower: 1, note: "Nhụy giữa bông" },
-      { product: "kem-nhung-xanh-la", perFlower: 2, note: "Làm cành và lá" },
-      { product: "bang-keo-quan-canh", fixed: 1, note: "Quấn cành" },
-      { product: "giay-goi-hoa", fixed: 1, note: "Gói bó hoa" },
-      { product: "ruy-bang-lua", fixed: 1, note: "Thắt nơ" },
-      { product: "sung-ban-keo", fixed: 1, note: "Gắn nhị — bỏ chọn nếu đã có" },
-    ],
-  },
-];
+export type TutorialStatus = "draft" | "published";
 
-export async function getTutorials(): Promise<Tutorial[]> {
-  return tutorials;
-}
+/** Bài lưu trong kho: thêm mã bài, trạng thái, ngày giờ. */
+export type StoredTutorial = Tutorial & {
+  id: string;
+  status: TutorialStatus;
+  updatedAt: string;
+  publishedAt?: string;
+};
 
-export async function getTutorial(slug: string): Promise<Tutorial | undefined> {
-  return tutorials.find((t) => t.slug === slug);
-}
-
-/** Ghép vật liệu của bài với thông tin sản phẩm (giá, còn hàng…). */
-export async function getMaterials(tutorial: Tutorial): Promise<Material[]> {
-  const rows = await Promise.all(
-    tutorial.materials.map(async (m) => {
-      const item = await getProduct(m.product);
-      return item ? { ...m, item } : null;
-    }),
-  );
-  return rows.filter((m) => m !== null);
-}
-
-/** Các bài có dùng sản phẩm này — để gợi ý ở trang sản phẩm. */
-export async function getTutorialsUsing(productSlug: string): Promise<Tutorial[]> {
-  return tutorials.filter((t) => t.materials.some((m) => m.product === productSlug));
+/** Video dọc (TikTok, YouTube Shorts) hiện ở kệ Shorts; còn lại là video thường. */
+export function isShort(t: Pick<Tutorial, "videoUrl">) {
+  return Boolean(parseVideo(t.videoUrl)?.vertical);
 }
 
 export function levelLabel(id: Level) {
   return levels.find((l) => l.id === id)?.label ?? id;
+}
+
+/** Bỏ dấu, viết thường, nối bằng gạch ngang: "Bó tulip hồng" → "bo-tulip-hong". */
+export function slugify(text: string) {
+  return text
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/đ/gi, "d")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+}
+
+export type Check = { ok: boolean; required?: boolean; label: string };
+
+/** Danh sách kiểm tra trước khi đăng. Mục `required` chưa đạt thì không cho đăng. */
+export function tutorialChecks(t: Tutorial, hasVideo: boolean): Check[] {
+  const len = t.title.trim().length;
+  const steps = t.steps.filter((s) => s.trim()).length;
+  return [
+    len < 10 || len > 90
+      ? { ok: false, required: true, label: `Tiêu đề ${len} ký tự (cần 10–90)` }
+      : { ok: true, label: `Tiêu đề ${len} ký tự` },
+    /^[a-z0-9]+(-[a-z0-9]+)*$/.test(t.slug)
+      ? { ok: true, label: `Đường dẫn /huong-dan/${t.slug}` }
+      : { ok: false, required: true, label: "Đường dẫn chỉ gồm chữ thường không dấu, số và dấu gạch ngang" },
+    t.flowerName.trim()
+      ? { ok: true, label: `Nút mua: “Mua nguyên liệu làm ${t.flowerName.trim()}”` }
+      : { ok: false, required: true, label: "Chưa có tên bông (dùng trong nút mua nguyên liệu)" },
+    steps
+      ? { ok: true, label: `${steps} bước làm` }
+      : { ok: false, required: true, label: "Chưa có bước làm nào" },
+    t.materials.length
+      ? { ok: true, label: `${t.materials.length} món nguyên liệu` }
+      : { ok: false, required: true, label: "Chưa chọn nguyên liệu — khách không mua được" },
+    hasVideo
+      ? { ok: true, label: "Có video" }
+      : { ok: false, label: t.videoUrl ? "Link video không đọc được (nhận TikTok, YouTube, Instagram, Facebook)" : "Chưa có video (trang sẽ hiện hình minh hoạ)" },
+    t.summary.trim()
+      ? { ok: true, label: "Có đoạn giới thiệu" }
+      : { ok: false, label: "Chưa có đoạn giới thiệu (hiện dưới video)" },
+    t.makeTime.trim()
+      ? { ok: true, label: `Thời gian làm: ${t.makeTime.trim()}` }
+      : { ok: false, label: "Chưa ghi thời gian làm" },
+  ];
 }
